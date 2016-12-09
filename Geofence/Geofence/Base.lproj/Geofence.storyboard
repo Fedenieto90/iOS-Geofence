@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="s7Z-LT-Qsd">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="XtK-u7-hbB">
+            <objects>
+                <navigationController id="s7Z-LT-Qsd" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3N0-AE-c39">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="0MQ-VT-wKk" kind="relationship" relationship="rootViewController" id="c71-wr-VhJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6a2-6z-Uuc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-567" y="9"/>
+        </scene>
+        <!--Geofence-->
+        <scene sceneID="4Ul-hC-xeh">
+            <objects>
+                <viewController id="0MQ-VT-wKk" customClass="ViewController" customModule="Geofence" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ub6-g4-hpG"/>
+                        <viewControllerLayoutGuide type="bottom" id="lUs-M6-lul"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m7d-Os-4Sk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8iY-l0-SDm">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PZm-gX-LGR">
+                                <rect key="frame" x="16" y="603" width="343" height="56"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qem-89-05b">
+                                        <rect key="frame" x="5" y="5" width="333" height="46"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="5Hq-al-PGK"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qem-89-05b" secondAttribute="trailing" constant="5" id="FrI-48-ZCL"/>
+                                    <constraint firstAttribute="bottom" secondItem="Qem-89-05b" secondAttribute="bottom" constant="5" id="ZAJ-aK-apT"/>
+                                    <constraint firstItem="Qem-89-05b" firstAttribute="top" secondItem="PZm-gX-LGR" secondAttribute="top" constant="5" id="d1O-e8-Lt6"/>
+                                    <constraint firstItem="Qem-89-05b" firstAttribute="leading" secondItem="PZm-gX-LGR" secondAttribute="leading" constant="5" id="fOD-Pg-77G"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lUs-M6-lul" firstAttribute="top" secondItem="8iY-l0-SDm" secondAttribute="bottom" id="IU0-WS-fYJ"/>
+                            <constraint firstAttribute="trailing" secondItem="PZm-gX-LGR" secondAttribute="trailing" constant="16" id="JPw-yZ-2Hb"/>
+                            <constraint firstItem="lUs-M6-lul" firstAttribute="top" secondItem="PZm-gX-LGR" secondAttribute="bottom" constant="8" id="Kqc-6K-pzA"/>
+                            <constraint firstItem="8iY-l0-SDm" firstAttribute="leading" secondItem="m7d-Os-4Sk" secondAttribute="leading" id="NV9-SA-cxe"/>
+                            <constraint firstAttribute="trailing" secondItem="8iY-l0-SDm" secondAttribute="trailing" id="jck-uR-pHq"/>
+                            <constraint firstItem="8iY-l0-SDm" firstAttribute="top" secondItem="ub6-g4-hpG" secondAttribute="bottom" id="mSS-9f-3D0"/>
+                            <constraint firstItem="PZm-gX-LGR" firstAttribute="leading" secondItem="m7d-Os-4Sk" secondAttribute="leading" constant="16" id="ogV-LM-diX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Geofence" id="4P3-15-enh"/>
+                    <connections>
+                        <outlet property="mapView" destination="8iY-l0-SDm" id="lWZ-SS-lH0"/>
+                        <outlet property="message" destination="Qem-89-05b" id="rxi-9q-evI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2D4-en-LcL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="248.80000000000001" y="8.5457271364317844"/>
+        </scene>
+    </scenes>
+</document>
