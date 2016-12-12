@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B324AC31DFEF15800810FF3 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE541C51DF3296900F86195 /* UserNotifications.framework */; };
+		8B324AC41DFEF15800810FF3 /* UserNotifications.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE541C51DF3296900F86195 /* UserNotifications.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8BE541951DF3173000F86195 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE541941DF3173000F86195 /* AppDelegate.swift */; };
 		8BE541971DF3173000F86195 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE541961DF3173000F86195 /* ViewController.swift */; };
 		8BE5419A1DF3173000F86195 /* Geofence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE541981DF3173000F86195 /* Geofence.storyboard */; };
@@ -34,6 +36,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8B324AC51DFEF15800810FF3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8B324AC41DFEF15800810FF3 /* UserNotifications.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8BE541911DF3173000F86195 /* Geofence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geofence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE541941DF3173000F86195 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B324AC31DFEF15800810FF3 /* UserNotifications.framework in Frameworks */,
 				8BE541C41DF31E2100F86195 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +166,7 @@
 				8BE5418D1DF3173000F86195 /* Sources */,
 				8BE5418E1DF3173000F86195 /* Frameworks */,
 				8BE5418F1DF3173000F86195 /* Resources */,
+				8B324AC51DFEF15800810FF3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

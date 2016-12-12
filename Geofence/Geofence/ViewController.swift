@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import UserNotifications
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
@@ -16,11 +17,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet weak var mapView: MKMapView!
     var locationManager : CLLocationManager = CLLocationManager()
     
+    let ENTERED_REGION_MESSAGE = "Welcome to Playa Grande! If the waves are good, you can try surfing!"
+    let ENTERED_REGION_NOTIFICATION_ID = "EnteredRegionNotification"
+    let EXITED_REGION_MESSAGE = "Bye! Hope you had a great day at the beach!"
+    let EXITED_REGION_NOTIFICATION_ID = "ExitedRegionNotification"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.delegate = self
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.delegate = self
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.badge, .alert, .sound]) { (granted, error) in
+        }
     }
     
     func setUpGeofenceForPlayaGrandeBeach() {
@@ -54,17 +63,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        print("Welcome to Playa Grande! If the waves are good, you can try surfing!")
-        self.message.text = "Welcome to Playa Grande! If the waves are good, you can try surfing!"
+        print(ENTERED_REGION_MESSAGE)
+        self.message.text = ENTERED_REGION_MESSAGE
+        self.createLocalNotification(message: ENTERED_REGION_MESSAGE, identifier: ENTERED_REGION_NOTIFICATION_ID)
     }
 
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        print("Bye! Hope you had a great day at the beach!")
-        self.message.text = "Bye! Hope you had a great day at the beach!"
+        print(EXITED_REGION_MESSAGE)
+        self.message.text = EXITED_REGION_MESSAGE
+        self.createLocalNotification(message: EXITED_REGION_MESSAGE, identifier: EXITED_REGION_NOTIFICATION_ID)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.message.text = ""
+    }
+    
+    func createLocalNotification(message: String, identifier: String) {
+        //Create a local notification
+        let content = UNMutableNotificationContent()
+        content.body = message
+        content.sound = UNNotificationSound.default()
+        
+        // Deliver the notification
+        let request = UNNotificationRequest.init(identifier: identifier, content: content, trigger: nil)
+        
+        // Schedule the notification
+        let center = UNUserNotificationCenter.current()
+        center.add(request) { (error) in
+        }
     }
     
     //MARK - MKMapViewDelegate
